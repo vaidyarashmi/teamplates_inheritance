@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>My Website</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <h4>Now tag</h4>It is the {% now "D M Y  H " %} 
+    <h4>comment tag</h4>{% comment 'this is optional comment' %}This is comment{% endcomment %}
+    <h4>cycle tag</h4>{% for i in data %}<div class="{% cycle 'row1' 'row2' %}">{{i}}{% endfor %}
+    <h4>If tag</h4>{% if data %}value is in data {{data}}{% else %}Data is empty{% endif %}
+    <h4>For tag</h4>{% for i in data %}<div class="row">{{i}}</div>{% empty %}not found{% endfor %}
+    <h4>Boolean tag</h4>{% for i in data %}<div class="row">{% if i == 1 %}{{data}}{% endif %}</div>{% empty %}not found{% endfor %}
+
+    <div id="content1">
+
+        {% block content1 %}
+        <a href="{% url 'home' %}">Go to template</a>
+        {% include 'home.html' %}
+        {% include 'contact.html' %}
+        {% endblock content1 %}
+    </div>
+    <div id="content2">
+        {% block content2 %}
+        {% endblock content2 %}
+    </div>
+    
+</body>
+
+</html>
